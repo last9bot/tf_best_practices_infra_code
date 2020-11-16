@@ -1,0 +1,13 @@
+repos:
+- repo: git://github.com/antonbabenko/pre-commit-terraform
+  rev: v1.31.0 # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
+  hooks:
+    - id: terraform_fmt
+    - id: terraform_docs
+    - id: terraform_tflint
+    - id: terraform_tfsec
+      args: 
+        # Ignore AWS002 - S3 Bucket does not have logging enabled.
+        # Ignore AWS017 - Unencrypted S3 bucket.
+        # as this is a test setup 
+        - '--args=-e AWS002,AWS017'
