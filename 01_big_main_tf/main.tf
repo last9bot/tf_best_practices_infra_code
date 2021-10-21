@@ -2,10 +2,25 @@ provider "aws" {
   region = "us-east-1"
 }
 
+
+# If required - update this to be a unique name by appending a random string to the default var
 variable "api_name" {
   description = "API Gateway REST API name"
   default     = "test-tf-apigw"
 }
+
+# If required - update this to be a unique name by appending a random string to the default var
+variable "lambda_name" {
+  description = "API Gateway integration lambda name"
+  default     = "test-tf-lambda"
+}
+
+# If required - update this to be a unique name by appending a random string to the default var
+variable "lambda_role" {
+  description = "API Gateway integration lambda role"
+  default     = "test-tf-lambda-role"
+}
+
 
 variable "resource_names" {
   description = "Resources to create"
@@ -21,16 +36,6 @@ variable "burst_limit" {
 variable "rate_limit" {
   description = "API Gateway rate limit"
   default     = 5
-}
-
-variable "lambda_name" {
-  description = "API Gateway integration lambda name"
-  default     = "test-tf-lambda"
-}
-
-variable "lambda_role" {
-  description = "API Gateway integration lambda role"
-  default     = "test-tf-lambda-role"
 }
 
 resource "aws_iam_role" "lambda" {
